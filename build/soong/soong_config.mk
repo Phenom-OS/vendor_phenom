@@ -1,9 +1,10 @@
-# Insert new variables inside the Jdc structure
+
+# Insert new variables inside the Phenom structure
 phenom_soong:
 	$(hide) mkdir -p $(dir $@)
 	$(hide) (\
 	echo '{'; \
-	echo '"Jdc": {'; \
+	echo '"phenom": {'; \
 	echo '    "Needs_text_relocations": $(if $(filter true,$(TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS)),true,false),'; \
 	echo '    "Uses_non_treble_camera": $(if $(filter true,$(TARGET_USES_NON_TREBLE_CAMERA)),true,false)'; \
 	echo '},'; \
