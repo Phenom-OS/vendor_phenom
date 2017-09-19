@@ -32,10 +32,6 @@ DEVICE_PACKAGE_OVERLAYS += \
     vendor/phenom/overlay/common \
     vendor/phenom/overlay/dictionaries
 
-# EXT4/F2FS format script
-PRODUCT_COPY_FILES += \
-    vendor/phenom/prebuilt/common/bin/format.sh:install/bin/format.sh
-
 # Custom PHENOM packages
 PRODUCT_PACKAGES += \
     BluetoothExt \
