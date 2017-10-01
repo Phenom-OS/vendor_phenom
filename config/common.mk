@@ -16,6 +16,7 @@
 # include vendor/phenom/sdclang/sdclang.mk
 
 PRODUCT_BRAND ?= Phenom
+ include vendor/phenom/config/version.mk
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
