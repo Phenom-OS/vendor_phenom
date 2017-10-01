@@ -1,5 +1,5 @@
 # Insert new variables inside the Jdc structure
-jdc_soong:
+phenom_soong:
 	$(hide) mkdir -p $(dir $@)
 	$(hide) (\
 	echo '{'; \
