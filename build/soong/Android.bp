@@ -1,6 +1,6 @@
 bootstrap_go_package {
-    name: "soong-phenom",
-    pkgPath: "phenom/soong/android",
+    name: "soong-phenom-android",
+    pkgPath: "phenom/soong/android_phenom",
     srcs: [
         "android/variable.go",
     ],
