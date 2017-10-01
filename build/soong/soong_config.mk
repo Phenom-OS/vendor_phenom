@@ -1,4 +1,3 @@
-
 # Insert new variables inside the Phenom structure
 phenom_soong:
 	$(hide) mkdir -p $(dir $@)
