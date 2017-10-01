@@ -1,4 +1,4 @@
-# Copyright (C) 2016 The JDCTeam
+# Copyright (C) 2017 Phenom-OS
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,16 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Inherit AOSP device configuration for gemini
-$(call inherit-product, device/xiaomi/gemini/aosp_gemini.mk)
+# Inherit common Phenom-OS stuff
+$(call inherit-product, vendor/phenom/config/common.mk)
 
-# Set those variables here to overwrite the inherited values.
-PRODUCT_NAME := jdc_gemini
-PRODUCT_DEVICE := gemini
-PRODUCT_BRAND := xiaomi
-PRODUCT_MANUFACTURER := Xiaomi
-PRODUCT_MODEL := Xiaomi Mi5
+$(call inherit-product, vendor/phenom/config/telephony.mk)
 
-DEVICE_MAINTAINERS := Zanin Marco (B--B)
-
-WITH_ROOT := true
+$(call inherit-product, vendor/phenom/config/phenom_props.mk)

@@ -1,4 +1,4 @@
-# Copyright (C) 2017 The JDCTeam
+# Copyright (C) 2017 Phenom-OS
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,8 +16,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     keyguard.no_require_sim=true \
     ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html \
     ro.url.legal.android_privacy=http://www.google.com/intl/%s/mobile/android/basic/privacy.html \
-    ro.setupwizard.require_network=any \
-    ro.setupwizard.mode=OPTIONAL \
+    ro.com.android.wifi-watchlist=GoogleGuest \
+    ro.setupwizard.enterprise_mode=1 \
     ro.com.android.dateformat=MM-dd-yyyy \
     ro.com.android.dataroaming=false \
     ro.atrace.core.services=com.google.android.gms,com.google.android.gms.ui,com.google.android.gms.persistent \

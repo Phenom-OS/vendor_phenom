@@ -1,4 +1,4 @@
-# Copyright (C) 2016 The JDCTeam
+# Copyright (C) 2017 Phenom-OS
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,44 +13,32 @@
 # limitations under the License.
 
 # include definitions for SDCLANG
-# include vendor/aosp/sdclang/sdclang.mk
+# include vendor/phenom/sdclang/sdclang.mk
 
-include vendor/aosp/config/version.mk
-
-PRODUCT_BRAND ?= JDCTeam
-
-# Use signing keys for user builds
-ifeq ($(TARGET_BUILD_VARIANT),user)
-    PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/aosp/.keys/release
-endif
+PRODUCT_BRAND ?= Phenom
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
-    vendor/aosp/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
-    vendor/aosp/prebuilt/common/bin/50-base.sh:system/addon.d/50-base.sh \
-
-# Bootanimation
-PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/bootanimation/bootanimation.zip:system/media/bootanimation.zip
-
+    vendor/phenom/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
+    vendor/phenom/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
+    vendor/phenom/prebuilt/common/bin/50-base.sh:system/addon.d/50-base.sh \
 
 DEVICE_PACKAGE_OVERLAYS += \
-    vendor/aosp/overlay/common \
-    vendor/aosp/overlay/dictionaries
+    vendor/phenom/overlay/common \
+    vendor/phenom/overlay/dictionaries
 
-# Custom JDCTeam packages
+# EXT4/F2FS format script
+PRODUCT_COPY_FILES += \
+    vendor/phenom/prebuilt/common/bin/format.sh:install/bin/format.sh
+
+# Custom PHENOM packages
 PRODUCT_PACKAGES += \
     BluetoothExt \
-    Jelly \
     LatinIME \
     Launcher3 \
     LiveWallpapers \
     LiveWallpapersPicker \
-    OTAUpdates \
     Stk \
-    Substratum \
-    ThemeInterfacer \
     Turbo
 
 # Extra tools
@@ -84,28 +72,19 @@ PRODUCT_PACKAGES += \
 
 # Backup Services whitelist
 PRODUCT_COPY_FILES += \
-    vendor/aosp/config/permissions/backup.xml:system/etc/sysconfig/backup.xml
-
-# For keyboard gesture typing
-ifneq ($(filter jdc_jflte jdc_onyx,$(TARGET_PRODUCT)),)
-PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/lib/libjni_latinimegoogle.so:system/lib/libjni_latinime.so
-else
-PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/lib64/libjni_latinimegoogle.so:system/lib64/libjni_latinime.so
-endif
+    vendor/phenom/config/permissions/backup.xml:system/etc/sysconfig/backup.xml
 
 # init.d support
 PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner
+    vendor/phenom/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner
 
-# JDC-specific init file
+# PHENOM-specific init file
 PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/etc/init.local.rc:root/init.jdc.rc
+    vendor/phenom/prebuilt/common/etc/init.local.rc:root/init.phenom.rc
 
 # Copy over added mimetype supported in libcore.net.MimeUtils
 PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/lib/content-types.properties:system/lib/content-types.properties
+    vendor/phenom/prebuilt/common/lib/content-types.properties:system/lib/content-types.properties
 
 # Enable SIP+VoIP on all targets
 PRODUCT_COPY_FILES += \
@@ -114,16 +93,12 @@ PRODUCT_COPY_FILES += \
 # Enable wireless Xbox 360 controller support
 PRODUCT_COPY_FILES += \
     frameworks/base/data/keyboards/Vendor_045e_Product_028e.kl:system/usr/keylayout/Vendor_045e_Product_0719.kl
-    
+
 # Stagefright FFMPEG plugin
 PRODUCT_PACKAGES += \
     libffmpeg_extractor \
     libffmpeg_omx \
     media_codecs_ffmpeg.xml
-
-# Changelog
-PRODUCT_COPY_FILES += \
-    vendor/aosp/Changelog.md:system/etc/Changelog.md
 
 # Needed by some RILs and for some gApps packages
 PRODUCT_PACKAGES += \
@@ -136,11 +111,3 @@ PRODUCT_PACKAGES += \
 
 # Recommend using the non debug dexpreopter
 USE_DEX2OAT_DEBUG ?= false
-
-# Magisk
-ifeq ($(WITH_ROOT),true)
- PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/magisk/Magisk.zip:install/magisk/Magisk.zip
-else
-$(warning Root method is undefined, please use 'WITH_ROOT := true' to define it)
-endif
