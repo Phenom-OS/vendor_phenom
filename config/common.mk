@@ -26,7 +26,7 @@ PRODUCT_COPY_FILES += \
 
 # Bootanimation
 PRODUCT_COPY_FILES += \
-    vendor/aosp/prebuilt/common/media/bootanimation.zip:system/media/bootanimation.zip
+    vendor/phenom/prebuilt/common/media/bootanimation.zip:system/media/bootanimation.zip
 
 DEVICE_PACKAGE_OVERLAYS += \
     vendor/phenom/overlay/common \
@@ -104,8 +104,8 @@ PRODUCT_COPY_FILES += \
 
 # Bring in camera effects
 PRODUCT_COPY_FILES +=  \
-    vendor/aosp/prebuilt/common/media/LMspeed_508.emd:system/media/LMspeed_508.emd \
-    vendor/aosp/prebuilt/common/media/PFFprec_600.emd:system/media/PFFprec_600.emd
+    vendor/phenom/prebuilt/common/media/LMspeed_508.emd:system/media/LMspeed_508.emd \
+    vendor/phenom/prebuilt/common/media/PFFprec_600.emd:system/media/PFFprec_600.emd
 
 # Copy over added mimetype supported in libcore.net.MimeUtils
 PRODUCT_COPY_FILES += \
@@ -113,7 +113,7 @@ PRODUCT_COPY_FILES += \
 
 # Fix Dialer
 PRODUCT_COPY_FILES +=  \
-    vendor/aosp/prebuilt/common/etc/sysconfig/dialer_experience.xml:system/etc/sysconfig/dialer_experience.xml
+    vendor/phenom/prebuilt/common/etc/sysconfig/dialer_experience.xml:system/etc/sysconfig/dialer_experience.xml
 
 # Enable SIP+VoIP on all targets
 PRODUCT_COPY_FILES += \
